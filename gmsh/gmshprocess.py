@@ -57,4 +57,11 @@ for each_vol in volumes:
     gmsh.write(f"{each_vol[2]}.stl")
     gmsh.model.removePhysicalGroups([(2, pg)])
 
+bbox = gmsh.model.getBoundingBox(-1, -1)
+print(f"""
+    xmin = {bbox[0]}   xmax = {bbox[3]}
+    ymin = {bbox[1]}   ymax = {bbox[4]}
+    zmin = {bbox[2]}   zmax = {bbox[5]}
+""")
+
 gmsh.finalize()
